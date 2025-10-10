@@ -1,3 +1,4 @@
+import MovieContent from "./components/MovieContent"
 import Navbar from "./components/Navbar"
 
 function App() {
@@ -6,6 +7,9 @@ function App() {
       <header className="flex justify-between items-center py-3 md:py-5">
         <Navbar />
       </header>
+      <main>
+        <MovieContent />
+      </main>
     </div>
   )
 }

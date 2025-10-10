@@ -3,9 +3,9 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
+  --color-white: #f9f9f9;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-foreground-background: var(--foreground-background);
   --color-primary: #ebb000;
 }
 
@@ -31,6 +31,6 @@
   }
 
   input {
-    @apply outline-0 caret-primary ring-1 ring-primary
+    @apply outline-0 caret-primary ring-[0.5px] ring-primary
   }
 }     
