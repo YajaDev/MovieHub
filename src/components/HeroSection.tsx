@@ -27,7 +27,7 @@ const HeroSection = () => {
               </span>
               Watch Now
             </button>
-            <button className="flex items-center py-1.5 px-5 rounded-sm text-foreground font-medium bg-foreground/20">
+            <button className="flex items-center py-1.5 px-5 rounded-sm text-foreground font-medium bg-foreground/20 ring-xs">
               <Plus size={20} />
               Add to Watch List
             </button>
