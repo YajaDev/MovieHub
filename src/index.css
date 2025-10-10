@@ -5,6 +5,7 @@
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-foreground-background: var(--foreground-background);
   --color-primary: #ebb000;
 }
 
@@ -28,4 +29,8 @@
   Nav a {
     @apply font-medium hover:text-primary transition-all duration-150
   }
-}   
+
+  input {
+    @apply outline-0 caret-primary ring-1 ring-primary
+  }
+}     
