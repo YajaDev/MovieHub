@@ -1,7 +1,7 @@
-import { Menu, Search } from "lucide-react";
+import { Menu, Minus, Search } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
-  
   return (
     <>
       <div className="text-2xl font-bold">
@@ -14,6 +14,11 @@ const Navbar = () => {
         <a href="#tranding">Trending</a>
         <a href="#popular">Popular</a>
         <a href="#topRated">Top Rated</a>
+
+        <span className="flex relative top-0.5 gap-3 ">
+          <Minus className="rotate-90" strokeWidth={1}/>
+          <ThemeToggle />
+        </span>
       </nav>
 
       {/* Search Bar */}
@@ -26,7 +31,7 @@ const Navbar = () => {
         <Search className="absolute top-2.5 right-3 h-4 w-4" />
       </div>
 
-      <Menu className="md:hidden m-3 text-primary" size={17} strokeWidth={4}/>
+      <Menu className="md:hidden m-3 text-primary" size={17} strokeWidth={4} />
     </>
   );
 };
