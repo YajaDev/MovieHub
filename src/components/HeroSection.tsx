@@ -1,4 +1,6 @@
-import { Play, Plus, Star } from "lucide-react";
+import { Star } from "lucide-react";
+import PlayButton from "./ui/PlayButton";
+import AddToWatchistBtn from "./ui/AddToWatchistBtn";
 
 const HeroSection = () => {
   return (
@@ -21,16 +23,8 @@ const HeroSection = () => {
           <h1 className="text-5xl font-bold">Movie Title</h1>
           <p>Movie Overview</p>
           <div className="flex gap-3 text-white">
-            <button className="flex items-center gap-2 py-1.5 rounded-sm px-5 bg-primary font-medium">
-              <span className="bg-white p-1 rounded-full">
-                <Play fill="#ebb000" strokeWidth={0} size={9} />
-              </span>
-              Watch Now
-            </button>
-            <button className="flex items-center py-1.5 px-5 rounded-sm text-foreground font-medium bg-foreground/20 ring-xs">
-              <Plus size={20} />
-              Add to Watch List
-            </button>
+            <PlayButton>Watch Now</PlayButton>
+            <AddToWatchistBtn />
           </div>
         </div>
       </div>

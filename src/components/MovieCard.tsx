@@ -1,19 +1,15 @@
-import { Play, Star } from "lucide-react";
+import { Star } from "lucide-react";
+import PlayButton from "./ui/PlayButton";
 
 const MovieCard = () => {
   return (
-    <div className="min-w-30 sm:min-w-45 md:min-w-60 max-w-60">
+    <div className="w-30 sm:min-w-45 md:min-w-60">
       <div className="relative group aspect-[2/3] font-medium">
         <img src="#" alt="" className="size-full rounded-sm" />
 
         {/* hover layover */}
         <div className="flex items-end absolute inset-0 bg-foreground/10 p-3 text-white rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-          <button className="flex justify-center items-center gap-2 py-1.5 rounded-sm bg-primary font-medium w-full">
-            <span className="bg-white p-1 rounded-full">
-              <Play fill="#ebb000" strokeWidth={0} size={9} />
-            </span>
-            view details
-          </button>
+          <PlayButton className="w-full">View Details</PlayButton>
         </div>
       </div>
 
