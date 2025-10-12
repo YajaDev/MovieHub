@@ -1,3 +1,4 @@
+import GenreSection from "./GenreSection"
 import HeroSection from "./HeroSection"
 import MovieSlider from "./MovieSlider"
 
@@ -6,6 +7,7 @@ const MovieContent = () => {
     <>
       <HeroSection />
       <MovieSlider/>
+      <GenreSection />
     </>
   )
 }
