@@ -35,6 +35,9 @@
   nav a {
     @apply font-medium hover:text-primary transition-all duration-150;
   }
+  h2 {
+    @apply text-2xl md:text-3xl
+  }
   button {
     @apply cursor-pointer
   }
