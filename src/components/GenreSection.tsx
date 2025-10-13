@@ -20,15 +20,15 @@ const GenreSection = () => {
     <section className="space-y-2 my-4">
       <h2 className="font-bold">Browse by Genre</h2>
 
-      <ul className="flex flex-wrap gap-2 text-sm md:text-md">
+      <ul className="flex flex-wrap gap-2 font-medium text-sm md:text-md">
         {genres.map((genre, i) => (
           <li key={i}>
             <button
               disabled={active === genre}
               onClick={() => setActive(genre)}
-              className={`rounded-sm px-3 pt-1 pb-1.5  ${
+              className={`rounded-sm px-3 pt-1 pb-1.5 ${
                 active === genre
-                  ? "bg-primary text-white font-medium"
+                  ? "bg-primary text-white font-bold"
                   : "bg-foreground/10 hover:bg-foreground/20"
               }`}
             >

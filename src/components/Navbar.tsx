@@ -31,7 +31,7 @@ const Navbar = () => {
         <Search className="absolute top-2.5 right-3 h-4 w-4" />
       </div>
 
-      <Menu className="md:hidden m-3 text-primary" size={17} strokeWidth={4} />
+      <Menu className="md:hidden text-primary" size={17} strokeWidth={4} />
     </>
   );
 };

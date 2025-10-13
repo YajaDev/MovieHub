@@ -20,7 +20,7 @@ const HeroSection = () => {
             <span>.</span>
             <p className="px-8 rounded-xs text-white bg-foreground/60">18+</p>
           </div>
-          <h1 className="text-5xl font-bold">Movie Title</h1>
+          <h1>Movie Title</h1>
           <p>Movie Overview</p>
           <div className="flex gap-3 text-white">
             <PlayButton>Watch Now</PlayButton>
