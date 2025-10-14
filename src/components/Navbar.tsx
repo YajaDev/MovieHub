@@ -4,9 +4,9 @@ import ThemeToggle from "./ThemeToggle";
 const Navbar = () => {
   return (
     <>
-      <div className="text-2xl font-bold">
+      <h2 className="font-bold">
         Movie<span className="text-primary">Hub</span>
-      </div>
+      </h2>
 
       {/* Navigation Bar */}
       <nav className="hidden md:flex gap-5">

@@ -30,6 +30,10 @@
 }
 
 @layer base {
+  * {
+    @apply transition-all duration-150;
+  }
+
   html,
   body {
     scroll-behavior: smooth;
@@ -64,7 +68,7 @@
     @apply bg-background text-foreground;
   }
   nav a {
-    @apply font-medium hover:text-primary transition-all duration-150;
+    @apply font-medium hover:text-primary;
   }
   h1 {
     @apply text-5xl font-bold
@@ -73,7 +77,13 @@
     @apply text-2xl md:text-3xl;
   }
   h3 {
+    @apply font-bold text-xl
+  }
+  h4 {
     @apply font-medium text-lg
+  }
+  h5 {
+    @apply font-medium text-sm
   }
   button {
     @apply cursor-pointer;
