@@ -22,7 +22,7 @@ const HeroSection = () => {
           </div>
           <h1>Movie Title</h1>
           <p>Movie Overview</p>
-          <div className="flex gap-3 text-white">
+          <div className="flex gap-3">
             <PlayButton>Watch Now</PlayButton>
             <AddToWatchistBtn />
           </div>
