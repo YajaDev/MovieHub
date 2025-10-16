@@ -68,7 +68,7 @@
     @apply bg-background text-foreground;
   }
   nav a {
-    @apply font-medium hover:text-primary;
+    @apply font-medium hover:text-primary text-sm;
   }
   h1 {
     @apply text-5xl font-bold
