@@ -1,7 +1,7 @@
 export type MovieList =  "trending" | "popular"
 
 export interface Movie {
-  adult: ReactNode;
+  adult: boolean;
   id: number;
   title: string;
   overview: string;

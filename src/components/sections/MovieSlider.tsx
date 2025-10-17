@@ -1,5 +1,5 @@
 import { ChevronRight, ChevronLeft } from "lucide-react";
-import MovieCard from "./MovieCard";
+import MovieCard from "../ui/MovieCard";
 
 const MovieSlider = () => {
   return (

@@ -2,7 +2,7 @@ import { Copyright, Facebook, Instagram, Twitter } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer>
+    <footer className="px-[6%]">
       <div className="grid md:grid-cols-4 gap-4 py-4">
         <div className="mb-3">
           <h3 className="font-bold">

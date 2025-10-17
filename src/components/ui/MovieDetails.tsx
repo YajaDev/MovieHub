@@ -1,7 +1,7 @@
 import { Star, X } from "lucide-react";
-import PlayButton from "./ui/PlayButton";
-import AddToWatchistBtn from "./ui/AddToWatchistBtn";
-import TMDBLogo from "../assets/TMDB-logo.png";
+import PlayButton from "./PlayButton";
+import AddToWatchistBtn from "./AddToWatchlistBtn";
+import TMDBLogo from "../../assets/TMDB-logo.png";
 
 const MovieDetails = () => {
   return (

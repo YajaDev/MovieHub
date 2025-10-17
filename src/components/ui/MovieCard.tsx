@@ -1,5 +1,5 @@
 import { Star } from "lucide-react";
-import PlayButton from "./ui/PlayButton";
+import PlayButton from "./PlayButton";
 
 const MovieCard = () => {
   return (

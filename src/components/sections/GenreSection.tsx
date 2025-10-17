@@ -1,5 +1,5 @@
 import { useState } from "react";
-import MovieCard from "./MovieCard";
+import MovieCard from "../ui/MovieCard";
 
 const genres = [
   "Action",

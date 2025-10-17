@@ -1,19 +1,15 @@
-import Footer from "./components/Footer"
-import MovieContent from "./components/MovieContent"
-import Navbar from "./components/Navbar"
+import Footer from "./components/layout/Footer";
+import Header from "./components/layout/header/Header";
+import MainLayout from "./components/layout/MainLayout";
 
 function App() {
   return (
-    <div className=" px-[5%]">
-      <header className="flex justify-between items-center py-3 md:py-5">
-        <Navbar />
-      </header>
-      <main>
-        <MovieContent />
-      </main>
+    <>
+      <Header />
+      <MainLayout />
       <Footer />
-    </div>
-  )
+    </>
+  );
 }
 
-export default App
+export default App;

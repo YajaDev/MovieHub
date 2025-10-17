@@ -1,9 +1,9 @@
 import { Star } from "lucide-react";
-import PlayButton from "./ui/PlayButton";
-import AddToWatchistBtn from "./ui/AddToWatchistBtn";
+import PlayButton from ".././ui/PlayButton";
+import AddToWatchistBtn from "../ui/AddToWatchlistBtn";
 import { useEffect, useState } from "react";
-import { fetchFeaturedMovie } from "../services/api";
-import type { Movie } from "../types/api";
+import { fetchFeaturedMovie } from "../../services/api";
+import type { Movie } from "../../types/movie";
 
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p";
 
@@ -27,7 +27,6 @@ const HeroSection = () => {
       setFeaturedMovie(featured);
       console.log(featured);
     };
-
 
     getFeatured();
   }, []);

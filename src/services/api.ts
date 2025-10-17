@@ -1,4 +1,4 @@
-import type { MovieList } from "../types/api";
+import type { MovieList } from "../types/movie";
 
 const BASE_URL: string = import.meta.env.VITE_TMDB_BASE_URL;
 const TOKEN = import.meta.env.VITE_TMDB_TOKEN;
