@@ -1,9 +1,5 @@
 import { Play } from "lucide-react";
-
-interface PlayButtonProps {
-  children: string;
-  className?: string;
-}
+import type { PlayButtonProps } from "../../types/ui";
 
 const PlayButton = ({ children, className }: PlayButtonProps) => {
   return (

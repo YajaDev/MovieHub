@@ -4,6 +4,7 @@
 
 @theme {
   --color-white: var(--white);
+  --color-layover: Var(--layover);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
@@ -11,10 +12,11 @@
 }
 
 :root {
-  --background: #f9f9f9;
+  --background: #f1f1ed;
   --foreground: #15151a;
   --primary: #ebb000;
   --white: #f9f9f9;
+  --layover: #15151a;
   --neutral: #7c7979; 
 }
 
@@ -31,7 +33,7 @@
 
 @layer base {
   * {
-    @apply transition-all duration-150;
+    @apply transition-all ;
   }
 
   html,
