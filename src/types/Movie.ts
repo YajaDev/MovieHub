@@ -1,4 +1,5 @@
-export type MovieList =  "trending" | "popular"
+export type MovieList = "trending" | "popular" | "top_rated";
+export type Status = "loading" | "success" | "failed";
 
 export interface Movie {
   adult: boolean;
@@ -9,4 +10,11 @@ export interface Movie {
   poster_path: string;
   release_date: string;
   vote_average: number;
+}
+
+export interface MoviesContext {
+  trending: Movie[];
+  popular: Movie[];
+  topRated: Movie[];
+  status: Status;
 }

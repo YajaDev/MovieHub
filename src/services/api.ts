@@ -16,13 +16,12 @@ export const fetchMovies = async (type: MovieList) => {
 
   // Set url based on type(param)
   switch (type) {
-    case "popular":
-      url += "/movie/popular";
-      break;
-
     case "trending":
-      url += "/trending/movie/week";
+      url += "/trending/movie/day";
       break;
+    // if not ternding is either "popular" | "top_rated"
+    default:
+      url += `/movie/${type}`
   }
 
   try {
@@ -30,7 +29,7 @@ export const fetchMovies = async (type: MovieList) => {
     if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`); //Check response status
 
     const data = await res.json();
-    return data.results;
+    return data.results ?? [];
   } catch (error) {
     console.error("Failed fetching MovieList", error);
     return [];
@@ -39,5 +38,5 @@ export const fetchMovies = async (type: MovieList) => {
 
 export async function fetchFeaturedMovie() {
   const data = await fetchMovies("trending");
-  return data.slice(0, 5);
+  return data.slice(0, 5) || [];
 }
