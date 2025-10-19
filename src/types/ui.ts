@@ -8,3 +8,11 @@ export interface PlayButtonProps {
   children: string;
   className?: string;
 }
+
+export interface SpinnerProps {
+  For: "HeroSection"
+}
+
+export interface SearchBarProps {
+  className?: string
+}

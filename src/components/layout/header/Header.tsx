@@ -1,22 +1,39 @@
-import { Search } from "lucide-react";
-import Navbar from "./Navbar";
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
+
+import { NavbarDesktop, NavbarMobile } from "./Navbar";
+import ThemeToggle from "../../ui/ThemeToggle";
 
 const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <header className="flex justify-between items-center px-[6%] py-3 bg-background">
-      <h2 className="font-bold ">
-        Movie<span className="text-primary">Hub</span>
-      </h2>
-      <Navbar />
-      {/* Search Bar */}
-      <div className="hidden md:block relative text-foreground">
-        <input
-          type="text"
-          placeholder="Search movies..."
-          className="bg-foreground/15 px-4 py-2 text-sm rounded-full w-40 focus:w-50 lg:w-50 lg:focus:w-65 transition-all"
-        />
-        <Search className="absolute top-2.5 right-3 h-4 w-4" />
+    <header className="fixed z-50 w-full">
+      <div className="flex justify-between items-center px-[6%] py-3">
+        <h2 className="font-bold ">
+          Movie<span className="text-primary">Hub</span>
+        </h2>
+        <NavbarDesktop />
+        {isOpen ? (
+          <X
+            className="md:hidden text-primary"
+            onClick={() => setIsOpen(false)}
+            size={22}
+            strokeWidth={3}
+          />
+        ) : (
+          <div className="flex gap-6 text-primary md:hidden">
+            <ThemeToggle />
+            <Menu
+              onClick={() => setIsOpen(true)}
+              size={20}
+              strokeWidth={3}
+            />
+          </div>
+        )}
       </div>
+
+      {isOpen && <NavbarMobile />}
     </header>
   );
 };

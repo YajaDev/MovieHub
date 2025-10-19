@@ -32,11 +32,5 @@ export const fetchMovies = async (type: MovieList) => {
     return data.results ?? [];
   } catch (error) {
     console.error("Failed fetching MovieList", error);
-    return [];
   }
 };
-
-export async function fetchFeaturedMovie() {
-  const data = await fetchMovies("trending");
-  return data.slice(0, 5) || [];
-}
