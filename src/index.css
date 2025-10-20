@@ -69,14 +69,14 @@
   body {
     @apply bg-background text-foreground;
   }
-  nav a {
+  ul li {
     @apply font-medium hover:text-primary text-sm;
   }
   h1 {
     @apply text-5xl font-bold
   }
   h2 {
-    @apply text-2xl md:text-3xl;
+    @apply text-3xl;
   }
   h3 {
     @apply font-bold text-xl
