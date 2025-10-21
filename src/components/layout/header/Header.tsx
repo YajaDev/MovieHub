@@ -4,11 +4,13 @@ import { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import ThemeToggle from "../../ui/ThemeToggle";
 import SearchBar from "../../ui/SearchBar";
+import { useMovieContext } from "../../../context/MovieContext";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-
+  const { status } = useMovieContext();
+  
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10); // true when not at top
@@ -21,7 +23,7 @@ const Header = () => {
   return (
     <header
       className={`fixed z-50 w-full
-        ${isScrolled ? "bg-background" : "text-white"}
+        ${isScrolled || status === "loading" ? "bg-background" : "text-white"}
         ${isOpen ? "max-md:rounded-b-2xl" : ""}
         ${!isScrolled && isOpen ? "max-md:bg-overlay/50" : ""}
       `}

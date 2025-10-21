@@ -30,7 +30,7 @@ export function useMovie() {
           setTrendingMovie(trendingMovies);
           setPopularMovie(popularMovies);
           setTopRatedMovie(topRatedMovies);
-          setTimeout(() => {setStatus("success")},1000) 
+          setTimeout(() => {setStatus("success")},500) 
           
         }
 
