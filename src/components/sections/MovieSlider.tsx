@@ -2,8 +2,11 @@ import { ChevronRight, ChevronLeft } from "lucide-react";
 import MovieCard from "../ui/MovieCard";
 import type { MovieSliderProps } from "../../types/ui";
 import { useRef } from "react";
+import { useMovieContext } from "../../context/MovieContext";
+import Loader from "../ui/Loader";
 
 const MovieSlider = ({ id, title, subTitle, movies }: MovieSliderProps) => {
+  const { status } = useMovieContext();
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: "left" | "right") => {
@@ -37,14 +40,19 @@ const MovieSlider = ({ id, title, subTitle, movies }: MovieSliderProps) => {
         </div>
       </div>
 
+      {status === "loading" && (
+        <Loader For="Slider"/>
+      )}
       {/* Movies container*/}
-      <div className="overflow-hidden">
-        <div ref={scrollRef} className="flex gap-4 overflow-x-auto pb-2">
-          {movies.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} />
-          ))}
+      {status === "success" && (
+        <div className="overflow-hidden">
+          <div ref={scrollRef} className="flex gap-4 overflow-x-auto pb-2">
+            {movies.map((movie) => (
+              <MovieCard key={movie.id} movie={movie} />
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </section>
   );
 };

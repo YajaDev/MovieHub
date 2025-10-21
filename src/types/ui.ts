@@ -11,7 +11,7 @@ export interface PlayButtonProps {
 }
 
 export interface SpinnerProps {
-  For: "HeroSection"
+  For: "HeroSection" | "Slider"
 }
 
 export interface SearchBarProps {
