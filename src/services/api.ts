@@ -19,7 +19,7 @@ export const fetchMovies = async (type: MovieList) => {
     case "trending":
       url += "/trending/movie/day";
       break;
-    // if not ternding is either "popular" | "top_rated"
+    // if not ternding it's either "popular" | "top_rated"
     default:
       url += `/movie/${type}`
   }

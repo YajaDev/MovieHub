@@ -1,5 +1,4 @@
 import { useState } from "react";
-import MovieCard from "../ui/MovieCard";
 
 const genres = [
   "Action",
@@ -37,7 +36,7 @@ const GenreSection = () => {
           </li>
         ))}
       </ul>
-
+{/* 
         <div className="flex gap-2 overflow-x-auto overflow-y-hidden">
           <MovieCard />
           <MovieCard />
@@ -51,7 +50,7 @@ const GenreSection = () => {
           <MovieCard />
           <MovieCard />
           <MovieCard />
-        </div>
+        </div> */}
 
     </section>
   );

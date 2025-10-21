@@ -23,7 +23,7 @@ const Header = () => {
       className={`fixed z-50 w-full
         ${isScrolled ? "bg-background" : "text-white"}
         ${isOpen ? "max-md:rounded-b-2xl" : ""}
-        ${!isScrolled && isOpen ? "max-md:bg-layover/50" : ""}
+        ${!isScrolled && isOpen ? "max-md:bg-overlay/50" : ""}
       `}
     >
       <div className="flex justify-between items-center px-[5%] md:px-[6%] py-3">
