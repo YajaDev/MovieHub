@@ -1,4 +1,4 @@
-import type { MovieList } from "../types/movie";
+import type { Category } from "../types/movie";
 
 const BASE_URL: string = import.meta.env.VITE_TMDB_BASE_URL;
 const TOKEN = import.meta.env.VITE_TMDB_TOKEN;
@@ -11,26 +11,47 @@ const options = {
   },
 };
 
-export const fetchMovies = async (type: MovieList) => {
-  let url = BASE_URL;
-
-  // Set url based on type(param)
-  switch (type) {
+const buildEndpoint = (category: Category, genreId?: String) => {
+  switch (category) {
     case "trending":
-      url += "/trending/movie/day";
-      break;
-    // if not ternding it's either "popular" | "top_rated"
+      return "/trending/movie/day";
+
+    case "genres":
+      return "/genre/movie/list";
+
+    case "byGenre":
+      if (!genreId)
+        throw new Error(
+          "Genre ID is required for fetching movies bygenre(type)"
+        );
+      return `/discover/movie?with_genres=${genreId}`;
+
+    case "popular":
+    case "top_rated":
+      return `/movie/${category}`;
+
     default:
-      url += `/movie/${type}`
+      throw new Error(`Unsupported movie category: ${category}`);
   }
+};
 
+const fetchFromAPI = async (endpoint: string) => {
+  const res = await fetch(`${BASE_URL}${endpoint}`, options);
+  if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`); //Check response status 
+  return await res.json();
+};
+
+export const fetchMovies = async (category: Category, genreId?: String) => {
   try {
-    const res = await fetch(url, options);
-    if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`); //Check response status
+    const endpoint = buildEndpoint(category, genreId );
+    const data = await fetchFromAPI(endpoint);
 
-    const data = await res.json();
-    return data.results ?? [];
-  } catch (error) {
-    console.error("Failed fetching MovieList", error);
+    if (category === "genres") return data.genres;
+    if (["popular", "trending", "top_rated"].includes(category))
+      return data.results;
+
+  } catch (err) {
+    console.error(err);
+    throw new Error(String(err));
   }
 };

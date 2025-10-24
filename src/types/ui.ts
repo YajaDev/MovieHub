@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
-import type { Movie } from "./movie";
+import type { Movie, Status } from "./movie";
 
-export interface MovieProviderProps{
-  children: ReactNode
+export interface MovieProviderProps {
+  children: ReactNode;
 }
 
 export interface PlayButtonProps {
@@ -11,20 +11,23 @@ export interface PlayButtonProps {
 }
 
 export interface SpinnerProps {
-  For: "HeroSection" | "Slider"
+  For: "HeroSection" | "Slider";
 }
 
 export interface SearchBarProps {
-  className?: string
+  className?: string;
 }
 
 export interface MovieCardProps {
-  movie:Movie
+  movie: Movie;
 }
 
 export interface MovieSliderProps {
-  id: string
-  title: string
-  subTitle: string
-  movies: Movie[]
+  id: string;
+  title: string;
+  subTitle: string;
+  moviesData: {
+    result: Movie[];
+    status: Status;
+  };
 }

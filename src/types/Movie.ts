@@ -1,5 +1,16 @@
-export type MovieList = "trending" | "popular" | "top_rated";
 export type Status = "loading" | "success" | "failed";
+
+export type Category =
+  | "trending"
+  | "popular"
+  | "top_rated"
+  | "genres"
+  | "byGenre";
+
+export interface Genre {
+  id: number;
+  name: string;
+}
 
 export interface Movie {
   adult: boolean;
@@ -12,9 +23,22 @@ export interface Movie {
   vote_average: number;
 }
 
-export interface MoviesContext {
-  trending: Movie[];
-  popular: Movie[];
-  topRated: Movie[];
-  status: Status;
-}
+export type MoviesData = {
+  trending: {
+    status: Status;
+    result: Movie[];
+  };
+  popular: {
+    status: Status;
+    result: Movie[];
+  };
+  top_rated: {
+    status: Status;
+    result: Movie[];
+  };
+  genres: {
+    status: Status;
+    result: Genre[];
+  }
+};
+

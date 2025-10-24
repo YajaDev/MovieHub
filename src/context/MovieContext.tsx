@@ -1,10 +1,10 @@
 import { createContext, useContext } from "react";
 import { useMovie } from "../hooks/useMovie";
 
-import type { MoviesContext } from "../types/movie";
 import type { MovieProviderProps } from "../types/ui";
+import type { MoviesData } from "../types/movie";
 
-const MovieContext = createContext<MoviesContext | null>(null);
+const MovieContext = createContext<MoviesData | null>(null);
 
 export const MovieProvider = ({ children }: MovieProviderProps) => {
   const MovieData = useMovie();

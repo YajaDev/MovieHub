@@ -1,47 +1,74 @@
-import { useEffect, useState } from "react";
+import { useEffect, useReducer } from "react";
 import { fetchMovies } from "../services/api";
-import type { Movie, Status } from "../types/movie";
+import type { Category, Movie, MoviesData, Status } from "../types/movie";
+
+type Action = {
+  category: Exclude<Category, "byGenre">;
+  data: Movie[];
+  status: Exclude<Status, "loading">;
+};
+
+const reducer = (state: MoviesData, action: Action) => {
+  return {
+    ...state,
+    [action.category]: {
+      status: action.status,
+      result: action.data,
+    },
+  };
+};
+
+const initialState = {
+  trending: {
+    status: "loading" as Status,
+    result: [],
+  },
+  popular: {
+    status: "loading" as Status,
+    result: [],
+  },
+  top_rated: {
+    status: "loading" as Status,
+    result: [],
+  },
+  genres: {
+    status: "loading" as Status,
+    result: [],
+  },
+};
 
 export function useMovie() {
-  const [trending, setTrendingMovie] = useState<Movie[]>([]);
-  const [popular, setPopularMovie] = useState<Movie[]>([]);
-  const [topRated, setTopRatedMovie] = useState<Movie[]>([]);
-  const [status, setStatus] = useState<Status>("loading");
+  const categories: Exclude<Category, "byGenre">[] = [
+    "trending",
+    "popular",
+    "top_rated",
+    "genres",
+  ];
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
     const getMovies = async () => {
       try {
-        const [trendingMovies, popularMovies, topRatedMovies] =
-          await Promise.all([
-            fetchMovies("trending"),
-            fetchMovies("popular"),
-            fetchMovies("top_rated"),
-          ]);
+        const results = await Promise.allSettled(
+          categories.map((category) => fetchMovies(category))
+        );
 
-        // Check if all failed
-        const allEmpty =
-          !trendingMovies.length &&
-          !popularMovies.length &&
-          !topRatedMovies.length;
+        results.map((result, i) => {
+          const category = categories[i];
 
-        if (allEmpty) {
-          setStatus("failed");
-        } else {
-          setTrendingMovie(trendingMovies);
-          setPopularMovie(popularMovies);
-          setTopRatedMovie(topRatedMovies);
-          setTimeout(() => {setStatus("success")},500) 
-          
-        }
-
+          if (result.status === "fulfilled") {
+            dispatch({ category, data: result.value, status: "success" });
+          } else {
+            dispatch({ category, data:[], status: "failed" });
+          }
+        });
       } catch (error) {
         console.error("Critical error fetching movies:", error);
-        setStatus("failed");
       }
     };
 
     getMovies();
   }, []);
-
-  return { trending, popular, topRated, status };
+  
+  return state ;
 }

@@ -5,7 +5,7 @@ import MovieSlider from "../sections/MovieSlider";
 import MovieDetails from "../ui/MovieDetails";
 
 const MainLayout = () => {
-  const { trending, popular, topRated } = useMovieContext();
+  const { trending, popular, top_rated } = useMovieContext();
 
   return (
     <main id="home">
@@ -15,13 +15,13 @@ const MainLayout = () => {
           id="trending"
           title="Trending This Week"
           subTitle="Stay updated with everyone's watching"
-          movies={trending}
+          moviesData={trending}
         />
         <MovieSlider
           id="popular"
           title="Popular Movies"
           subTitle="Most watched movies right now"
-          movies={popular}
+          moviesData={popular}
         />
 
         <GenreSection />
@@ -30,7 +30,7 @@ const MainLayout = () => {
           id="topRated"
           title="Top Rated Movies"
           subTitle="Highest rated movies of all time"
-          movies={topRated}
+          moviesData={top_rated}
         />
         <MovieDetails />
       </div>

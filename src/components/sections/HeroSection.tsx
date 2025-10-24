@@ -10,10 +10,12 @@ import { formatToYear } from "../../utils/dateFormmating";
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p";
 
 const HeroSection = () => {
-  const { trending, status } = useMovieContext();
+  const { trending } = useMovieContext();
   const { currentSlide, goToSlide, index, featuredMovies } =
-    useFeatured(trending);
+    useFeatured(trending.result);
 
+  const status = trending.status
+  
   return (
     <>
       {status === "loading" && <Loader For="HeroSection" />}

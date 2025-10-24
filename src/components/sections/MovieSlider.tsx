@@ -2,11 +2,12 @@ import { ChevronRight, ChevronLeft } from "lucide-react";
 import MovieCard from "../ui/MovieCard";
 import type { MovieSliderProps } from "../../types/ui";
 import { useRef } from "react";
-import { useMovieContext } from "../../context/MovieContext";
 import Loader from "../ui/Loader";
 
-const MovieSlider = ({ id, title, subTitle, movies }: MovieSliderProps) => {
-  const { status } = useMovieContext();
+const MovieSlider = ({ id, title, subTitle, moviesData }: MovieSliderProps) => {
+  const movies = moviesData.result
+  const status = moviesData.status
+
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: "left" | "right") => {
