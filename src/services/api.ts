@@ -14,21 +14,21 @@ const options = {
 const buildEndpoint = (category: Category, genreId?: String) => {
   switch (category) {
     case "trending":
-      return "/trending/movie/day";
+      return `/trending/movie/day?include_adult=true`;
 
     case "genres":
-      return "/genre/movie/list";
+      return `/genre/movie/list`;
 
     case "byGenre":
       if (!genreId)
         throw new Error(
           "Genre ID is required for fetching movies bygenre(type)"
         );
-      return `/discover/movie?with_genres=${genreId}`;
+      return `/discover/movie?include_adult=true&with_genres=${genreId}`;
 
     case "popular":
     case "top_rated":
-      return `/movie/${category}`;
+      return `/movie/${category}?include_adult=true`;
 
     default:
       throw new Error(`Unsupported movie category: ${category}`);
@@ -47,7 +47,7 @@ export const fetchMovies = async (category: Category, genreId?: String) => {
     const data = await fetchFromAPI(endpoint);
 
     if (category === "genres") return data.genres;
-    if (["popular", "trending", "top_rated"].includes(category))
+    if (["popular", "trending", "top_rated", "byGenre"].includes(category))
       return data.results;
 
   } catch (err) {

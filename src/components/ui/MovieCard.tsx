@@ -24,11 +24,15 @@ const MovieCard = ({ movie }: MovieCardProps) => {
         </div>
       </div>
 
-      <h5 className="font-bold md:text-[17px] truncate mt-2.5 mr-15">{movie.title}</h5>
+      <h5 className="font-bold md:text-[17px] truncate mt-2.5 mr-15">
+        {movie.title}
+      </h5>
       <div className="flex items-center gap-1 text-foreground/60 text-xs md:text-sm font-medium">
         <Star className="size-3 md:size-4 fill-primary stroke-none" />
         <p>{movie.vote_average.toFixed(1)}</p>
-        <p className="text-foreground/40 ml-auto">{formatToYear(movie.release_date)}</p>
+        <p className="text-foreground/40 ml-auto">
+          {formatToYear(movie.release_date)}
+        </p>
       </div>
     </div>
   );
