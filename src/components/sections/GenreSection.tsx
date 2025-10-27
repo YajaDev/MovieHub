@@ -48,7 +48,7 @@ const GenreSection = () => {
   }, [active]);
 
   return (
-    <section className="space-y-4 my-4">
+    <section id="byGenre" className="space-y-4 my-4">
       <h2 className="font-bold">Browse by Genre</h2>
       {genres.status === "success" && (
         <ul className="flex flex-wrap gap-2 font-medium text-sm md:text-md">
