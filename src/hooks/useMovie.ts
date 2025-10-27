@@ -27,7 +27,7 @@ const initialState = {
     status: "loading" as Status,
     result: [],
   },
-  top_rated: {
+  top_rated: {    
     status: "loading" as Status,
     result: [],
   },

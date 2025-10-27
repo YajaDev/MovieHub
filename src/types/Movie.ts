@@ -23,22 +23,14 @@ export interface Movie {
   vote_average: number;
 }
 
-export type MoviesData = {
-  trending: {
-    status: Status;
-    result: Movie[];
-  };
-  popular: {
-    status: Status;
-    result: Movie[];
-  };
-  top_rated: {
-    status: Status;
-    result: Movie[];
-  };
-  genres: {
-    status: Status;
-    result: Genre[];
-  }
-};
+export interface Result<T> {
+  status: Status;
+  result: T[];
+}
 
+export type MoviesData = {
+  trending: Result<Movie>;
+  popular: Result<Movie>;
+  top_rated: Result<Movie>;
+  genres: Result<Genre>;
+};
