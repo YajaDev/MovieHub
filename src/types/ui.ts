@@ -11,7 +11,8 @@ export interface PlayButtonProps {
 }
 
 export interface SpinnerProps {
-  For: "HeroSection" | "Slider";
+  SpinnerSize: number;
+  isFull?: boolean 
 }
 
 export interface SearchBarProps {

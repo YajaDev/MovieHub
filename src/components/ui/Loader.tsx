@@ -1,10 +1,10 @@
 import { LoaderCircle } from "lucide-react";
 import type { SpinnerProps } from "../../types/ui";
 
-const Loader = ({ For }: SpinnerProps) => {
-  const size = (For === "HeroSection" ? 60 : 40)
+const Loader = ({ SpinnerSize, isFull }: SpinnerProps) => {
+  const size = SpinnerSize
   const style = `flex flex-col justify-center items-center gap-2 ${
-    For === "HeroSection" ? "h-screen" : ""
+    isFull ? "h-screen" : "p-25"
   }`;
 
   return (

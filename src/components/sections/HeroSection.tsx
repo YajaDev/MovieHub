@@ -18,7 +18,7 @@ const HeroSection = () => {
   
   return (
     <>
-      {status === "loading" && <Loader For="HeroSection" />}
+      {status === "loading" && <Loader SpinnerSize={60} isFull={true} />}
 
       {status === "success" && (
         <section

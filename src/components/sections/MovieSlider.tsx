@@ -42,7 +42,7 @@ const MovieSlider = ({ id, title, subTitle, moviesData }: MovieSliderProps) => {
       </div>
 
       {status === "loading" && (
-        <Loader For="Slider"/>
+        <Loader SpinnerSize={40}/>
       )}
       {/* Movies container*/}
       {status === "success" && (
