@@ -5,7 +5,8 @@ export type Category =
   | "popular"
   | "top_rated"
   | "genres"
-  | "byGenre";
+  | "byGenre"
+  | "movieDetails";
 
 export interface Genre {
   id: number;
@@ -34,3 +35,32 @@ export type MoviesData = {
   top_rated: Result<Movie>;
   genres: Result<Genre>;
 };
+
+export interface MovieDetails extends Movie {
+  genres: Genre[];
+  production_companies: ProductionCompany[];
+  production_countries: ProductionCountry[];
+  spoken_languages: SpokenLanguage[];
+  budget: number;
+  status: string;
+  vote_average: number;
+  vote_count: number;
+}
+
+interface ProductionCompany {
+  id: number;
+  name: string;
+  logo_path: string | null;
+  origin_country: string;
+}
+
+interface ProductionCountry {
+  iso_3166_1: string;
+  name: string;
+}
+
+interface SpokenLanguage {
+  iso_639_1: string;
+  english_name: string;
+  name: string;
+}

@@ -5,7 +5,7 @@ import TMDBLogo from "../../assets/TMDB-logo.png";
 
 const MovieDetails = () => {
   return (
-    <div className="hidden fixed inset-0 flex items-center justify-center backdrop-blur-xs">
+    <div className="fixed inset-0 flex items-center justify-center backdrop-blur-xs">
       <div
         className="relative w-full h-full max-w-195 md:max-h-[90vh] bg-neutral
         rounded-md overflow-y-auto custom-scrollbar"

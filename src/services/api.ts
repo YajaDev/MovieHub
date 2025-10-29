@@ -11,10 +11,21 @@ const options = {
   },
 };
 
-const buildEndpoint = (category: Category, genreId?: String) => {
+const buildEndpoint = (
+  category: Category,
+  genreId?: String,
+  movieId?: number
+) => {
   switch (category) {
     case "trending":
       return `/trending/movie/day?include_adult=true`;
+
+    case "movieDetails":
+      if (!movieId)
+        throw new Error(
+          "Movie ID is required for fetching movie Details(type)"
+        );
+      return `/movie/${movieId}?include_adult=true`;
 
     case "genres":
       return `/genre/movie/list`;
@@ -37,19 +48,23 @@ const buildEndpoint = (category: Category, genreId?: String) => {
 
 const fetchFromAPI = async (endpoint: string) => {
   const res = await fetch(`${BASE_URL}${endpoint}`, options);
-  if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`); //Check response status 
+  if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`); //Check response status
   return await res.json();
 };
 
-export const fetchMovies = async (category: Category, genreId?: String) => {
+export const fetchMovies = async (
+  category: Category,
+  genreId?: String,
+  movieId?: number
+) => {
   try {
-    const endpoint = buildEndpoint(category, genreId );
+    const endpoint = buildEndpoint(category, genreId, movieId);
     const data = await fetchFromAPI(endpoint);
 
     if (category === "genres") return data.genres;
+    if (category === "movieDetails") return data;
     if (["popular", "trending", "top_rated", "byGenre"].includes(category))
       return data.results;
-
   } catch (err) {
     console.error(err);
     throw new Error(String(err));
