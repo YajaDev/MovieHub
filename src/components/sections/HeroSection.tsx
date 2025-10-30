@@ -5,17 +5,18 @@ import Loader from "../ui/Loader";
 
 import { useMovieContext } from "../../context/MovieContext";
 import { useFeatured } from "../../hooks/useFeature";
-import { formatToYear } from "../../utils/dateFormmating";
+import { formatToYear } from "../../utils/formmating";
 
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p";
 
 const HeroSection = () => {
   const { trending } = useMovieContext();
-  const { currentSlide, goToSlide, index, featuredMovies } =
-    useFeatured(trending.result);
+  const { currentSlide, goToSlide, index, featuredMovies } = useFeatured(
+    trending.result
+  );
 
-  const status = trending.status
-  
+  const status = trending.status;
+
   return (
     <>
       {status === "loading" && <Loader SpinnerSize={60} isFull={true} />}

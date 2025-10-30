@@ -1,9 +1,11 @@
 import { Star } from "lucide-react";
 import PlayButton from "./PlayButton";
 import type { MovieCardProps } from "../../types/ui";
-import { formatToYear } from "../../utils/dateFormmating";
+import { formatToYear } from "../../utils/formmating";
+import { useMovieModal } from "../../context/MovieModalContext";
 
-const MovieCard = ({ movie }: MovieCardProps) => {
+const MovieCard = ({ movie, movieId }: MovieCardProps) => {
+  const { openDetails } = useMovieModal();
   const IMAGE_BASE_URL = `https://image.tmdb.org/t/p/original${movie.poster_path}`;
 
   return (
@@ -18,9 +20,11 @@ const MovieCard = ({ movie }: MovieCardProps) => {
         {/* hover overlay */}
         <div
           className="flex items-end absolute inset-0 bg-overlay/60 p-3 text-white rounded-sm 
-          opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+          opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer"
         >
-          <PlayButton className="w-full">View Details</PlayButton>
+          <PlayButton onclick={() => openDetails(movieId)} className="w-full">
+            View Details
+          </PlayButton>
         </div>
       </div>
 

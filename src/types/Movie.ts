@@ -41,10 +41,20 @@ export interface MovieDetails extends Movie {
   production_companies: ProductionCompany[];
   production_countries: ProductionCountry[];
   spoken_languages: SpokenLanguage[];
+  original_language: string;
   budget: number;
   status: string;
+  runtime: number;
+  tagline: string;
+  laguages: Laguages[]
   vote_average: number;
   vote_count: number;
+}
+
+interface Laguages {
+  english_name: string;
+  iso_639_1: string;
+  name: string;
 }
 
 interface ProductionCompany {

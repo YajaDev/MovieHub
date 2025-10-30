@@ -5,41 +5,36 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import type { MovieDetails, Status } from "../types/movie";
+import type { MovieDetails } from "../types/movie";
 import { fetchMovies } from "../services/api";
 
 interface MovieModalContextType {
   movieDetails: MovieDetails | null;
-  status: Status | "idle";
   openDetails: (movieID: number) => void;
   closeDetails: () => void;
 }
 
 const MovieModalContext = createContext<MovieModalContextType | null>(null);
 
-export const MovieModelProvider = ({ children }: { children: ReactNode }) => {
+export const MovieModalProvider = ({ children }: { children: ReactNode }) => {
   const [movieId, setMovieId] = useState<number | null>(null);
-  const [status, setStatus] = useState<Status | "idle">("idle");
   const [movieDetails, setMovieDetails] = useState<MovieDetails | null>(null);
 
   const openDetails = (movieID: number) => setMovieId(movieID);
   const closeDetails = () => {
     setMovieDetails(null);
-    setStatus("idle");
+    setMovieId(null)
   };
 
   useEffect(() => {
     if (!movieId) return;
 
     const getDetails = async () => {
-      setStatus("loading");
       setMovieDetails(null);
       try {
         const data = await fetchMovies("movieDetails", undefined, movieId);
-        setStatus("success");
         setMovieDetails(data);
       } catch (error) {
-        setStatus("failed");
         setMovieDetails(null);
         console.error(error);
       }
@@ -50,7 +45,7 @@ export const MovieModelProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <MovieModalContext.Provider
-      value={{ movieDetails, status, openDetails, closeDetails }}
+      value={{ movieDetails, openDetails, closeDetails }}
     >
       {children}
     </MovieModalContext.Provider>

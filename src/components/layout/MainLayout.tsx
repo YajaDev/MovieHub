@@ -1,5 +1,5 @@
 import { useMovieContext } from "../../context/MovieContext";
-import { MovieModelProvider } from "../../context/MovieModelContext";
+import { MovieModalProvider } from "../../context/MovieModalContext";
 import GenreSection from "../sections/GenreSection";
 import HeroSection from "../sections/HeroSection";
 import MovieSlider from "../sections/MovieSlider";
@@ -9,7 +9,7 @@ const MainLayout = () => {
   const { trending, popular, top_rated } = useMovieContext();
 
   return (
-    <MovieModelProvider>
+    <MovieModalProvider>
       <main id="home">
         <HeroSection />
         <div className="px-[5%] md:px-[6%] space-y-5">
@@ -38,7 +38,7 @@ const MainLayout = () => {
           <MovieDetails />
         </div>
       </main>
-    </MovieModelProvider>
+    </MovieModalProvider>
   );
 };
 

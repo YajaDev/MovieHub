@@ -21,6 +21,7 @@ export interface SearchBarProps {
 }
 
 export interface MovieCardProps {
+  movieId: number
   movie: Movie;
 }
 
