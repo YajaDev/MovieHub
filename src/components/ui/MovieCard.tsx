@@ -4,12 +4,12 @@ import type { MovieCardProps } from "../../types/ui";
 import { formatToYear } from "../../utils/formmating";
 import { useMovieModal } from "../../context/MovieModalContext";
 
-const MovieCard = ({ movie, movieId }: MovieCardProps) => {
+const MovieCard = ({ movie}: MovieCardProps) => {
   const { openDetails } = useMovieModal();
   const IMAGE_BASE_URL = `https://image.tmdb.org/t/p/original${movie.poster_path}`;
 
   return (
-    <div className="min-w-40 md:min-w-55">
+    <div className="min-w-40 md:min-w-55" onClick={() => openDetails(movie.id)} >
       <div className="relative group aspect-[2/3] overflow-hidden rounded-sm font-medium">
         <img
           src={IMAGE_BASE_URL}
@@ -22,7 +22,7 @@ const MovieCard = ({ movie, movieId }: MovieCardProps) => {
           className="flex items-end absolute inset-0 bg-overlay/60 p-3 text-white rounded-sm 
           opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer"
         >
-          <PlayButton onclick={() => openDetails(movieId)} className="w-full">
+          <PlayButton onclick={() => openDetails(movie.id)} className="w-full">
             View Details
           </PlayButton>
         </div>

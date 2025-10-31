@@ -49,7 +49,7 @@ const MovieSlider = ({ id, title, subTitle, moviesData }: MovieSliderProps) => {
         <div className="overflow-hidden">
           <div ref={scrollRef} className="flex gap-4 overflow-x-auto pb-2">
             {movies.map((movie) => (
-              <MovieCard key={movie.id} movie={movie} movieId={movie.id}/>
+              <MovieCard key={movie.id} movie={movie}/>
             ))}
           </div>
         </div>

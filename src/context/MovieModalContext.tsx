@@ -10,6 +10,7 @@ import { fetchMovies } from "../services/api";
 
 interface MovieModalContextType {
   movieDetails: MovieDetails | null;
+  isloading: boolean;
   openDetails: (movieID: number) => void;
   closeDetails: () => void;
 }
@@ -18,12 +19,18 @@ const MovieModalContext = createContext<MovieModalContextType | null>(null);
 
 export const MovieModalProvider = ({ children }: { children: ReactNode }) => {
   const [movieId, setMovieId] = useState<number | null>(null);
+  const [isloading, setIsLoading] = useState<boolean>(false);
   const [movieDetails, setMovieDetails] = useState<MovieDetails | null>(null);
 
-  const openDetails = (movieID: number) => setMovieId(movieID);
+  const openDetails = (movieID: number) => {
+    setIsLoading(true);
+    setMovieDetails(null); 
+    setMovieId(movieID);
+  };
   const closeDetails = () => {
+    setIsLoading(false);
     setMovieDetails(null);
-    setMovieId(null)
+    setMovieId(null);
   };
 
   useEffect(() => {
@@ -45,7 +52,7 @@ export const MovieModalProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <MovieModalContext.Provider
-      value={{ movieDetails, openDetails, closeDetails }}
+      value={{ movieDetails, openDetails, closeDetails, isloading }}
     >
       {children}
     </MovieModalContext.Provider>

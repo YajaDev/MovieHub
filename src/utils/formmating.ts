@@ -24,7 +24,7 @@ export function formatArrayValue(value:| string
       .join(", ");
   }
 
-  if (typeof value === "number" ) return value.toLocaleString("en-US", { style: "currency", currency: "USD" });
-  if (typeof value === "string") return value;
+  if (typeof value === "number" ) return value ?  value.toLocaleString("en-US", { style: "currency", currency: "USD" }) : "N/A";
+  if (typeof value === "string") return value || "N/A";
   return "N/A";
 }
