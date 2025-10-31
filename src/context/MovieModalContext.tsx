@@ -43,6 +43,7 @@ export const MovieModalProvider = ({ children }: { children: ReactNode }) => {
         setMovieDetails(data);
       } catch (error) {
         setMovieDetails(null);
+        setIsLoading(false);
         console.error(error);
       }
     };

@@ -14,11 +14,15 @@ const options = {
 const buildEndpoint = (
   category: Category,
   genreId?: String,
-  movieId?: number
+  movieId?: number,
+  query?: string
 ) => {
   switch (category) {
     case "trending":
       return `/trending/movie/day?include_adult=true`;
+
+    case "genres":
+      return `/genre/movie/list`;
 
     case "movieDetails":
       if (!movieId)
@@ -27,15 +31,19 @@ const buildEndpoint = (
         );
       return `/movie/${movieId}?include_adult=true`;
 
-    case "genres":
-      return `/genre/movie/list`;
-
     case "byGenre":
       if (!genreId)
         throw new Error(
           "Genre ID is required for fetching movies bygenre(type)"
         );
       return `/discover/movie?include_adult=true&with_genres=${genreId}`;
+
+    case "search":
+      if (!query) 
+        throw new Error(
+          "Query is required to search movie"
+        );
+      return `search/movie?query=${query}&include_adult=true`
 
     case "popular":
     case "top_rated":
@@ -55,15 +63,16 @@ const fetchFromAPI = async (endpoint: string) => {
 export const fetchMovies = async (
   category: Category,
   genreId?: String,
-  movieId?: number
+  movieId?: number,
+  query?: string
 ) => {
   try {
-    const endpoint = buildEndpoint(category, genreId, movieId);
+    const endpoint = buildEndpoint(category, genreId, movieId, query);
     const data = await fetchFromAPI(endpoint);
 
     if (category === "genres") return data.genres;
     if (category === "movieDetails") return data;
-    if (["popular", "trending", "top_rated", "byGenre"].includes(category))
+    if (["popular", "trending", "top_rated", "byGenre", "search"].includes(category))
       return data.results;
   } catch (err) {
     console.error(err);

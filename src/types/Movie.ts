@@ -6,6 +6,7 @@ export type Category =
   | "top_rated"
   | "genres"
   | "byGenre"
+  | "search"
   | "movieDetails";
 
 export interface Genre {
@@ -46,7 +47,7 @@ export interface MovieDetails extends Movie {
   status: string;
   runtime: number;
   tagline: string;
-  laguages: Laguages[]
+  laguages: Laguages[];
   vote_average: number;
   vote_count: number;
 }

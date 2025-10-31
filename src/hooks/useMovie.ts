@@ -3,7 +3,7 @@ import { fetchMovies } from "../services/api";
 import type { Category, Movie, MoviesData, Status } from "../types/movie";
 
 type Action = {
-  category: Exclude<Category, "byGenre">;
+  category: Category;
   data: Movie[];
   status: Exclude<Status, "loading">;
 };
@@ -38,7 +38,7 @@ const initialState = {
 };
 
 export function useMovie() {
-  const categories: Exclude<Category, "byGenre">[] = [
+  const categories: Category[] = [
     "trending",
     "popular",
     "top_rated",
