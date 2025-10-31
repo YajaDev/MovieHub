@@ -26,6 +26,9 @@ const MovieDetails = () => {
 
   // retur if movie details has value and loading state is false  
   if (movieDetails) {
+    // hidden overflow while movieDetails has value
+    document.body.style.overflow = "hidden"
+
     const {
       title,
       adult,
@@ -209,22 +212,25 @@ const MovieDetails = () => {
                 </div>
 
                 <a
-                  href="https://www.themoviedb.org/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex gap-1.5 items-center px-2 py-1 md:mt-5 rounded-sm bg-primary/70"
-                >
-                  <div className="size-5">
-                    <img src={TMDBLogo} alt="" />
-                  </div>
-                  <span>View on MTDb</span>
-                </a>
+                href={`https://www.themoviedb.org/movie/${movieDetails.id}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex gap-1.5 items-center px-3 py-1.5 md:mt-5 rounded-sm bg-primary/70 hover:bg-primary/90 transition-colors text-sm font-medium"
+              >
+                <div className="size-5">
+                  <img src={TMDBLogo} alt="TMDB Logo" />
+                </div>
+                <span>View on TMDB</span>
+              </a>
               </div>
             </div>
           </div>
         </div>
       </div>
     );
+  } else {
+    // scrollable when movieDetails has no value
+    document.body.style.overflow = "auto"
   }
 };
 

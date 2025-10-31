@@ -81,7 +81,7 @@ const GenreSection = () => {
       {movies?.status === "success" && movies.result.length > 0 && (
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 ">
           {movies.result.map((movie) => (
-            <MovieCard key={movie.title} movie={movie} movieId={movie.id}/>
+            <MovieCard key={movie.title} movie={movie}/>
           ))}
         </div>
       )}
