@@ -24,7 +24,7 @@ const GenreSection = () => {
         name: genres.result[0].name,
       });
     }
-  }, [genres.status, active]);
+  }, [genres, active]);
 
   useEffect(() => {
     const getMovie = async () => {

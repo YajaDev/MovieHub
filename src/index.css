@@ -33,7 +33,9 @@
 
 @layer base {
   * {
-    @apply transition-all;
+    transition-property: color, background-color, border-color, opacity,
+      transform;
+    transition-duration: 150ms;
   }
 
   html,

@@ -13,7 +13,7 @@ const options = {
 
 const buildEndpoint = (
   category: Category,
-  genreId?: String,
+  genreId?: string,
   movieId?: number,
   query?: string
 ) => {
@@ -43,7 +43,7 @@ const buildEndpoint = (
         throw new Error(
           "Query is required to search movie"
         );
-      return `search/movie?query=${query}&include_adult=true`
+      return `/search/movie?query=${query}&include_adult=true`
 
     case "popular":
     case "top_rated":
@@ -62,7 +62,7 @@ const fetchFromAPI = async (endpoint: string) => {
 
 export const fetchMovies = async (
   category: Category,
-  genreId?: String,
+  genreId?: string,
   movieId?: number,
   query?: string
 ) => {

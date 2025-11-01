@@ -9,12 +9,25 @@ import {
   formatRuntimeClock,
   formatToYear,
 } from "../../utils/formmating";
+import { useEffect } from "react";
 
 const MovieDetails = () => {
-  const { movieDetails, closeDetails, isloading } = useMovieModal();
+  const { movieDetails, closeDetails, isLoading } = useMovieModal();
+
+  useEffect(() => {
+    if (movieDetails) {
+      document.body.style.overflow = "hidden"; // hidden overflow while movieDetails has value
+    } else {
+      document.body.style.overflow = "auto"; // scrollable when movieDetails has no value
+    }
+
+    return () => {
+      document.body.style.overflow = "auto"; // cleanup when component unmounts
+    };
+  }, [movieDetails]);
 
   // Loading State
-  if (isloading && !movieDetails)
+  if (isLoading && !movieDetails)
     return (
       <div
         className="fixed -inset-0.5 z-50 flex items-center justify-center backdrop-blur-lg"
@@ -24,10 +37,8 @@ const MovieDetails = () => {
       </div>
     );
 
-  // retur if movie details has value and loading state is false  
+  // retur if movie details has value and loading state is false
   if (movieDetails) {
-    // hidden overflow while movieDetails has value
-    document.body.style.overflow = "hidden"
 
     const {
       title,
@@ -212,25 +223,22 @@ const MovieDetails = () => {
                 </div>
 
                 <a
-                href={`https://www.themoviedb.org/movie/${movieDetails.id}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex gap-1.5 items-center px-3 py-1.5 md:mt-5 rounded-sm bg-primary/70 hover:bg-primary/90 transition-colors text-sm font-medium"
-              >
-                <div className="size-5">
-                  <img src={TMDBLogo} alt="TMDB Logo" />
-                </div>
-                <span>View on TMDB</span>
-              </a>
+                  href={`https://www.themoviedb.org/movie/${movieDetails.id}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex gap-1.5 items-center px-3 py-1.5 md:mt-5 rounded-sm bg-primary/70 hover:bg-primary/90 transition-colors text-sm font-medium"
+                >
+                  <div className="size-5">
+                    <img src={TMDBLogo} alt="TMDB Logo" />
+                  </div>
+                  <span>View on TMDB</span>
+                </a>
               </div>
             </div>
           </div>
         </div>
       </div>
     );
-  } else {
-    // scrollable when movieDetails has no value
-    document.body.style.overflow = "auto"
   }
 };
 

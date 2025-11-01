@@ -27,7 +27,7 @@ const initialState = {
     status: "loading" as Status,
     result: [],
   },
-  top_rated: {    
+  top_rated: {
     status: "loading" as Status,
     result: [],
   },
@@ -37,13 +37,9 @@ const initialState = {
   },
 };
 
+const categories: Category[] = ["trending", "popular", "top_rated", "genres"];
+
 export function useMovie() {
-  const categories: Category[] = [
-    "trending",
-    "popular",
-    "top_rated",
-    "genres",
-  ];
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
@@ -59,7 +55,7 @@ export function useMovie() {
           if (result.status === "fulfilled") {
             dispatch({ category, data: result.value, status: "success" });
           } else {
-            dispatch({ category, data:[], status: "failed" });
+            dispatch({ category, data: [], status: "failed" });
           }
         });
       } catch (error) {
@@ -69,6 +65,6 @@ export function useMovie() {
 
     getMovies();
   }, []);
-  
-  return state ;
+
+  return state;
 }

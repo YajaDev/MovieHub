@@ -1,3 +1,5 @@
+/* eslint-disable react-refresh/only-export-components */
+
 import {
   createContext,
   useContext,
@@ -10,7 +12,7 @@ import { fetchMovies } from "../services/api";
 
 interface MovieModalContextType {
   movieDetails: MovieDetails | null;
-  isloading: boolean;
+  isLoading: boolean;
   openDetails: (movieID: number) => void;
   closeDetails: () => void;
 }
@@ -19,12 +21,12 @@ const MovieModalContext = createContext<MovieModalContextType | null>(null);
 
 export const MovieModalProvider = ({ children }: { children: ReactNode }) => {
   const [movieId, setMovieId] = useState<number | null>(null);
-  const [isloading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [movieDetails, setMovieDetails] = useState<MovieDetails | null>(null);
 
   const openDetails = (movieID: number) => {
     setIsLoading(true);
-    setMovieDetails(null); 
+    setMovieDetails(null);
     setMovieId(movieID);
   };
   const closeDetails = () => {
@@ -43,8 +45,9 @@ export const MovieModalProvider = ({ children }: { children: ReactNode }) => {
         setMovieDetails(data);
       } catch (error) {
         setMovieDetails(null);
-        setIsLoading(false);
         console.error(error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -53,7 +56,7 @@ export const MovieModalProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <MovieModalContext.Provider
-      value={{ movieDetails, openDetails, closeDetails, isloading }}
+      value={{ movieDetails, openDetails, closeDetails, isLoading }}
     >
       {children}
     </MovieModalContext.Provider>
