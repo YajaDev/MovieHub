@@ -32,7 +32,7 @@ const HeroSection = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-overlay to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-overlay/80 to-transparent" />
 
-          <div className="absolute inset-0 px-[6%] flex items-center text-white">
+          <div className="absolute inset-0 px-[6%] md:px-[8%] flex items-center text-white">
             <div className="flex flex-col gap-3 max-w-3xl">
               <div className="flex gap-2 items-center text-xs [&>span]:font-bold">
                 <p className="bg-primary text-white py-0.5  md:py-1 px-1.5 rounded-sm font-medium">

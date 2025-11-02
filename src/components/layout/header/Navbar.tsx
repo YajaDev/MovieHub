@@ -11,8 +11,8 @@ function Navbar() {
   ];
 
   return (
-    <nav className="flex max-md:flex-col gap-4 max-md:pb-4 ">
-      <ul className="flex max-md:flex-col gap-2 md:gap-4 lg:gap-5">
+    <nav className="flex max-md:flex-col gap-3 max-md:pb-4 md:px-2">
+      <ul className="flex md:items-center max-md:flex-col gap-2 md:gap-4 lg:gap-5">
         {links.map((link) => (
           <li key={link.label}>
             <a href={link.href}>{link.label}</a>
@@ -21,7 +21,7 @@ function Navbar() {
       </ul>
 
       {/* Desktop Theme Toggle */}
-      <span className="max-md:hidden flex top-0.5 gap-2 lg:gap-3 ">
+      <span className="max-md:hidden flex items-center top-0.5 gap-1 lg:gap-3 ">
         <Minus className="rotate-90" strokeWidth={1} />
         <ThemeToggle />
       </span>

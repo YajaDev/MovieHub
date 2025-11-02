@@ -12,7 +12,7 @@ const MainLayout = () => {
     <MovieModalProvider>
       <main id="home">
         <HeroSection />
-        <div className="px-[5%] md:px-[6%] space-y-5">
+        <div className="px-[6%] md:px-[8%] space-y-5">
           <MovieSlider
             id="trending"
             title="Trending This Week"

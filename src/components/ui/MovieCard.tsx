@@ -9,7 +9,7 @@ const MovieCard = ({ movie}: MovieCardProps) => {
   const IMAGE_BASE_URL = `https://image.tmdb.org/t/p/original${movie.poster_path}`;
 
   return (
-    <div className="min-w-40 md:min-w-55" onClick={() => openDetails(movie.id)} >
+    <div className="min-w-40 md:min-w-50" onClick={() => openDetails(movie.id)} >
       <div className="relative group aspect-[2/3] overflow-hidden rounded-sm font-medium">
         <img
           src={IMAGE_BASE_URL}

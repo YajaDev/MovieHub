@@ -5,7 +5,6 @@ import Navbar from "./Navbar";
 import ThemeToggle from "../../ui/ThemeToggle";
 import SearchBar from "../../ui/SearchBar";
 
-
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -21,13 +20,13 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed z-50 w-full
-        ${isScrolled ? "bg-background" : "text-white"}
-        ${isOpen ? "max-md:rounded-b-2xl" : ""}
-        ${!isScrolled && isOpen ? "max-md:bg-overlay/50" : ""}
-      `}
+      className={`fixed w-full z-50
+      ${isScrolled ? "bg-background" : "text-white"}
+      ${isOpen ? "max-md:rounded-b-2xl" : ""}
+      ${!isScrolled && isOpen ? "max-md:bg-overlay/50" : ""}
+    `}
     >
-      <div className="flex justify-between items-center px-[5%] md:px-[6%] py-3">
+      <div className="flex justify-between items-center px-[6%] md:px-[8%] py-3">
         <h2 className="font-bold ">
           Movie<span className="text-primary">Hub</span>
         </h2>
