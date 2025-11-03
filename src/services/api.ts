@@ -39,11 +39,8 @@ const buildEndpoint = (
       return `/discover/movie?include_adult=true&with_genres=${genreId}`;
 
     case "search":
-      if (!query) 
-        throw new Error(
-          "Query is required to search movie"
-        );
-      return `/search/movie?query=${query}&include_adult=true`
+      if (!query) throw new Error("Query is required to search movie");
+      return `/search/movie?query=${query}&include_adult=true`;
 
     case "popular":
     case "top_rated":
@@ -54,8 +51,8 @@ const buildEndpoint = (
   }
 };
 
-const fetchFromAPI = async (endpoint: string) => {
-  const res = await fetch(`${BASE_URL}${endpoint}`, options);
+const fetchFromAPI = async (endpoint: string, signal?: AbortSignal) => {
+  const res = await fetch(`${BASE_URL}${endpoint}`, { ...options, signal });
   if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`); //Check response status
   return await res.json();
 };
@@ -64,15 +61,20 @@ export const fetchMovies = async (
   category: Category,
   genreId?: string,
   movieId?: number,
-  query?: string
+  query?: string,
+  signal?: AbortSignal
 ) => {
   try {
     const endpoint = buildEndpoint(category, genreId, movieId, query);
-    const data = await fetchFromAPI(endpoint);
+    const data = await fetchFromAPI(endpoint, signal);
 
     if (category === "genres") return data.genres;
     if (category === "movieDetails") return data;
-    if (["popular", "trending", "top_rated", "byGenre", "search"].includes(category))
+    if (
+      ["popular", "trending", "top_rated", "byGenre", "search"].includes(
+        category
+      )
+    )
       return data.results;
   } catch (err) {
     console.error(err);

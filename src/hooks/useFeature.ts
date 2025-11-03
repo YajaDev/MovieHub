@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import type { Movie } from "../types/movie";
-
+  
 export function useFeatured(movies: Movie[]) {
   const featuredMovies = movies.slice(0, 5);
   const [index, setIndex] = useState(0);
