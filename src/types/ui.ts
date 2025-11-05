@@ -17,6 +17,7 @@ export interface SpinnerProps {
 }
 
 export interface SearchBarProps {
+  id: string
   className?: string;
 }
 

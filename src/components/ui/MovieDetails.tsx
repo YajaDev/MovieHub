@@ -120,10 +120,10 @@ const MovieDetails = () => {
           </div>
 
           {/* Movie Info */}
-          <div className="p-3 relative md:p-4 space-y-5 -mt-32 md:-mt-48 z-60">
+          <div className="px-[6%] pb-5 relative md:p-4 space-y-5 -mt-32 md:-mt-48 z-60">
             <div className="md:flex md:gap-4 ">
               {/* Poster */}
-              <div className="w-40 md:w-52 rounded-xl overflow-hidden bg-foreground/10 flex-shrink-0">
+              <div className="w-40 md:w-52 rounded-xl overflow-hidden bg-neutral/90 flex-shrink-0">
                 {posterUrl ? (
                   <img
                     src={posterUrl}
@@ -226,7 +226,7 @@ const MovieDetails = () => {
                   href={`https://www.themoviedb.org/movie/${movieDetails.id}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex gap-1.5 items-center px-3 py-1.5 md:mt-5 rounded-sm bg-primary/70 hover:bg-primary/90 transition-colors text-sm font-medium"
+                  className="inline-flex gap-1.5 items-center px-3 py-1.5 md:mt-5 rounded-sm bg-primary hover:bg-primary/80 transition-colors text-sm font-medium"
                 >
                   <div className="size-5">
                     <img src={TMDBLogo} alt="TMDB Logo" />
