@@ -28,7 +28,7 @@ function Navbar() {
 
       {/* Mobile Search Bar */}
       <div className="md:hidden flex justify-between items-center">
-        <SearchBar />
+        <SearchBar id="mobile-search-input"/>
         <Search size={20} />
       </div>
     </nav>

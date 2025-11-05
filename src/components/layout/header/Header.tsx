@@ -35,7 +35,7 @@ const Header = () => {
         <div className="max-md:hidden">
           <Navbar />
         </div>
-        <SearchBar className="max-md:hidden" />
+        <SearchBar id="desktop-search-input" className="max-md:hidden" />
 
         {/* Mobile Menu Button */}
         <div className="md:hidden text-primary flex gap-6">

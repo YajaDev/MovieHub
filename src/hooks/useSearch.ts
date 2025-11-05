@@ -1,32 +1,23 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import type { Movie, Status } from "../types/movie";
 import { fetchMovies } from "../services/api";
 
 const useSearch = (query: string) => {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [status, setStatus] = useState<Status | "idle">("idle");
-  const [error, setError] = useState<string | null>(null);
-
-  const controllerRef = useRef<AbortController | null>(null);
 
   useEffect(() => {
-    if (!query.trim() || query.length <= 3) {
+    if (!query.trim() || query.length < 3) {
       setMovies([]);
       setStatus("idle");
-      setError(null);
       return;
     }
 
-    // cancel previous fetch before starting a new one
-    controllerRef.current?.abort();
-
     const controller = new AbortController();
-    controllerRef.current = controller;
 
-    const fetchSearch = async () => {
-      setStatus("loading")
-
-      try { 
+    setStatus("loading");
+    const timeoutId = setTimeout(async () => {
+      try {
         const data = await fetchMovies(
           "search",
           undefined,
@@ -35,23 +26,24 @@ const useSearch = (query: string) => {
           controller.signal
         );
 
-          setMovies(data)
-          setStatus("success")
-      } catch (err: unknown) {
+        setMovies(data);
+        setStatus("success");
+      } catch (err) {
         if (err instanceof Error && err.name === "AbortError") {
-          setStatus("idle")
-        };
-        setError(String(err))
-        setStatus("failed")
+          setStatus("idle");
+          return;
+        }
+        setStatus("failed");
       }
-    };    
+    }, 500);
 
-    fetchSearch();
-
-    return () => controller.abort();
+    return () => {
+      controller.abort();
+      clearTimeout(timeoutId);
+    };
   }, [query]);
 
-  return { movies, status, error };
+  return { movies, status };
 };
 
 export default useSearch;
