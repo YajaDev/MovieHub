@@ -17,15 +17,13 @@ const SearchBar = ({ className, id }: SearchBarProps) => {
       <input
         id={id}
         placeholder="Search movies..."
-        className="bg-foreground/15 px-4 py-2 text-sm rounded-full w-40 focus:w-50 lg:w-50 lg:focus:w-65 transition-all ring-xs focus:shadow shadow-primary"
+        className="bg-foreground/15 pl-4 pr-8 py-2 text-sm rounded-full w-40 focus:w-50 lg:w-50 lg:focus:w-65 transition-all ring-xs focus:shadow shadow-primary"
         onChange={(e) => setQuery(e.target.value)}
       />
       {status !== "loading" ? (
         <Search className="max-md:hidden absolute top-2.5 right-3 size-4" />
       ) : (
-        <div>
-          <Loader className="absolute text-primary stroke-3 top-2.5 right-3 size-4 animate-spin"/>
-        </div>
+        <Loader className="absolute text-primary stroke-3 top-2.5 right-3 size-4 animate-spin" />
       )}
 
       {/* Search results list */}
@@ -51,7 +49,7 @@ const SearchBar = ({ className, id }: SearchBarProps) => {
             movies.map((movie) => (
               <li
                 key={movie.id}
-                className="flex items-center p-1.5 hover:bg-white/20 transition text-white"
+                className="flex items-center p-1.5 hover:bg-white/20 transition text-white cursor-pointer"
                 onClick={() => openDetails(movie.id)}
               >
                 {/* Image container */}

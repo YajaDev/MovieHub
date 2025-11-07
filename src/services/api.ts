@@ -76,10 +76,7 @@ export const fetchMovies = async (
       )
     )
       return data.results;
-  } catch (err) {
-    if (err instanceof Error && err.name !== "AbortError"){
-      console.error(err);
-    }
+  } catch (err) {    
     throw new Error(String(err));
   }
 };
