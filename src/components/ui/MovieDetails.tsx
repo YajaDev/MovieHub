@@ -10,9 +10,11 @@ import {
   formatToYear,
 } from "../../utils/formmating";
 import { useEffect } from "react";
+import { useTrailer } from "../../context/TrailerContext";
 
 const MovieDetails = () => {
   const { movieDetails, closeDetails, isLoading } = useMovieModal();
+  const { openTrailer } = useTrailer();
 
   useEffect(() => {
     if (movieDetails) {
@@ -39,8 +41,8 @@ const MovieDetails = () => {
 
   // retur if movie details has value and loading state is false
   if (movieDetails) {
-
     const {
+      id,
       title,
       adult,
       genres,
@@ -183,7 +185,9 @@ const MovieDetails = () => {
                 </div>
 
                 <div className="flex gap-2">
-                  <PlayButton className="z-10">Watch Now</PlayButton>
+                  <PlayButton className="z-10" onClick={() => openTrailer(id)}>
+                    Watch Trailer
+                  </PlayButton>
                   <AddToWatchistBtn />
                 </div>
               </div>

@@ -22,7 +22,7 @@ const MovieCard = ({ movie}: MovieCardProps) => {
           className="flex items-end absolute inset-0 bg-overlay/60 p-3 text-white rounded-sm 
           opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer"
         >
-          <PlayButton onclick={() => openDetails(movie.id)} className="w-full">
+          <PlayButton onClick={() => openDetails(movie.id)} className="w-full">
             View Details
           </PlayButton>
         </div>

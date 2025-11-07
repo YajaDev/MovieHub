@@ -7,17 +7,17 @@ export interface MovieProviderProps {
 
 export interface PlayButtonProps {
   children: string;
-  onclick?: () => void;
+  onClick?: () => void;
   className?: string;
 }
 
 export interface SpinnerProps {
   SpinnerSize: number;
-  isFull?: boolean 
+  isFull?: boolean;
 }
 
 export interface SearchBarProps {
-  id: string
+  id: string;
   className?: string;
 }
 
