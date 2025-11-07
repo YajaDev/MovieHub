@@ -7,7 +7,7 @@ export interface MovieProviderProps {
 
 export interface PlayButtonProps {
   children: string;
-  onclick?: () => void;
+  onClick?: () => void;
   className?: string;
 }
 

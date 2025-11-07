@@ -5,6 +5,7 @@ export type Category =
   | "popular"
   | "top_rated"
   | "genres"
+  | "trailerDetails"
   | "byGenre"
   | "search"
   | "movieDetails";
@@ -36,6 +37,13 @@ export type MoviesData = {
   top_rated: Result<Movie>;
   genres: Result<Genre>;
 };
+
+export interface TrailerDetail {
+  name: string
+  key: string
+  site: string
+  type: string
+}
 
 export interface MovieDetails extends Movie {
   genres: Genre[];

@@ -25,11 +25,11 @@ const buildEndpoint = (
       return `/genre/movie/list`;
 
     case "movieDetails":
-      if (!movieId)
-        throw new Error(
-          "Movie ID is required for fetching movie Details(type)"
-        );
-      return `/movie/${movieId}?include_adult=true`;
+    case "trailerDetails":
+      if (!movieId) throw new Error("Movie ID is required for fetching");
+      return category === "movieDetails"
+        ? `/movie/${movieId}?include_adult=true`
+        : `/movie/${movieId}/videos`;
 
     case "byGenre":
       if (!genreId)
@@ -71,12 +71,17 @@ export const fetchMovies = async (
     if (category === "genres") return data.genres;
     if (category === "movieDetails") return data;
     if (
-      ["popular", "trending", "top_rated", "byGenre", "search"].includes(
-        category
-      )
+      [
+        "popular",
+        "trending",
+        "top_rated",
+        "byGenre",
+        "search",
+        "trailerDetails",
+      ].includes(category)
     )
       return data.results;
-  } catch (err) {    
+  } catch (err) {
     throw new Error(String(err));
   }
 };
