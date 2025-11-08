@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useMovieContext } from "../../context/MovieContext";
-import type { Result, Movie } from "../../types/movie";
+import type { Result, Movie, Genre } from "../../types/movie";
 import { fetchMovies } from "../../services/api";
 import MovieCard from "../ui/MovieCard";
 import Loader from "../ui/Loader";
@@ -52,7 +52,7 @@ const GenreSection = () => {
       <h2 className="font-bold">Browse by Genre</h2>
       {genres.status === "success" && (
         <ul className="flex flex-wrap gap-2 font-medium text-sm md:text-md">
-          {genres.result.map((genre) => (
+          {genres.result.map((genre: Genre) => (
             <li key={genre.id}>
               <button
                 disabled={active?.name === genre.name}
@@ -80,7 +80,7 @@ const GenreSection = () => {
       {/* Render Movies */}
       {movies?.status === "success" && movies.result.length > 0 && (
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 ">
-          {movies.result.map((movie) => (
+          {movies.result.map((movie: Movie) => (
             <MovieCard key={movie.title} movie={movie}/>
           ))}
         </div>

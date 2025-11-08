@@ -11,6 +11,7 @@ import {
 } from "../../utils/formmating";
 import { useEffect } from "react";
 import { useTrailer } from "../../context/TrailerContext";
+import type { Genre } from "../../types/movie";
 
 const MovieDetails = () => {
   const { movieDetails, closeDetails, isLoading } = useMovieModal();
@@ -164,7 +165,7 @@ const MovieDetails = () => {
 
                 {/* genre */}
                 <div className="flex flex-wrap gap-y-1 gap-x-1.5 text-xs font-medium">
-                  {genres.map((genre) => (
+                  {genres.map((genre: Genre) => (
                     <span
                       key={genre.id}
                       className="py-1 px-2.5 bg-foreground/20 rounded-full"
