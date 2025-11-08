@@ -1,73 +1,31 @@
-# React + TypeScript + Vite
+# 🎬 MovieHub
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+MovieHub is a modern React + TypeScript web app that lets users **explore, search, and view details** of movies powered by the **TMDB (The Movie Database) API**.  
+It provides smooth browsing by trending, popular, top-rated, and genre-based categories — all wrapped in a clean, responsive, and dark-mode-friendly UI.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+- **Trending, Popular & Top-Rated Movies**
+- **Instant Search** with real-time results
+- **Movie Details Modal** with ratings, runtime, and production info
+- **Watch Trailers** directly in-app (YouTube embedded player)
+- **Browse by Genre** with dynamic filtering
+- **Light/Dark Mode Toggle**
+- **Scroll to Top** floating button
+- Optimized with React hooks, Context API, and custom hooks
+- Fully responsive UI built with **Tailwind CSS**
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+| Category | Technology |
+|-----------|-------------|
+| Frontend | React 18, TypeScript |
+| Styling | Tailwind CSS |
+| Icons | Lucide React |
+| API | TMDB (The Movie Database) API |
+| State Management | React Context API |
+| Tooling | Vite |
